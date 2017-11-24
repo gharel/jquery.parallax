@@ -1,5 +1,5 @@
 (function ($) {
-	const defaults = { direction: 'top', ratio: 0.2 }
+	const defaults = { direction: 'top', ratio: 0.21 }
 
 	$.fn.parallax = function (options) {
 		if (this.length === 0) {
@@ -35,7 +35,7 @@
 			$(window).on('scroll.parallax', () => {
 				const value = `center ${parallax.settings.direction} ${-($(window).scrollTop() - (el.offset().top - window.innerHeight)) * parallax.settings.ratio}px`
 				$(el).css('background-position', value)
-			})
+			}).trigger('scroll.parallax')
 		}
 
 		init()
